@@ -148,18 +148,26 @@
 	}
 }
 
-- (BOOL)textViewShouldEndEditing:(UITextView *)textView {
-	if(self.textViewDelegate && [self.textViewDelegate respondsToSelector:@selector(textViewShouldEndEditing:)]) {
-		return [self.textViewDelegate textViewShouldEndEditing:textView];
-	}
-	
-	return YES;
-}
-
 - (void)textViewDidEndEditing:(UITextView *)textView {
 	if(self.textViewDelegate && [self.textViewDelegate respondsToSelector:@selector(textViewDidEndEditing:)]) {
 		return [self.textViewDelegate textViewDidEndEditing:textView];
 	}
+}
+
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView {
+	if(self.textViewDelegate && [self.textViewDelegate respondsToSelector:@selector(textViewShouldBeginEditing:)]) {
+		return [self.textViewDelegate textViewShouldBeginEditing:textView];
+	}
+
+	return YES;
+}
+
+- (BOOL)textViewShouldEndEditing:(UITextView *)textView {
+	if(self.textViewDelegate && [self.textViewDelegate respondsToSelector:@selector(textViewShouldEndEditing:)]) {
+		return [self.textViewDelegate textViewShouldEndEditing:textView];
+	}
+
+	return YES;
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
